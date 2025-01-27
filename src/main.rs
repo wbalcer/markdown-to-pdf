@@ -27,7 +27,7 @@ fn generate_pdf(content: &str, output_path: &str) -> Result<(), Box<dyn std::err
 
     let title = extract_title(content).unwrap_or("Untitled".to_string());
     let signature = extract_signature(content).unwrap_or("___________________".to_string());
-    let footer_text = extract_footer(content).unwrap_or("Generated with Markdown to PDF".to_string());
+    let footer_text = extract_footer(content).unwrap_or("Generated with Markdown to PDF by wbalcer".to_string());
 
     let cover = doc.get_page(cover_page).get_layer(cover_layer);
     cover.use_text(&title, 32.0, Mm(20.0), Mm(250.0), &font_bold);
@@ -48,7 +48,7 @@ fn generate_pdf(content: &str, output_path: &str) -> Result<(), Box<dyn std::err
 
     for line in content.lines() {
         if line.starts_with("Signature:") || line == footer_text {
-            continue; // Skip signature and footer lines
+            continue;
         }
 
         let (current_page, current_layer) = content_pages.last().unwrap();

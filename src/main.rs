@@ -2,7 +2,7 @@ use printpdf::*;
 use std::{fs, io::BufWriter};
 
 fn main() {
-    let input_path = "input.md";
+    let input_path = "readme.md";
     let output_path = "output.pdf";
 
     let markdown_content = match fs::read_to_string(input_path) {
